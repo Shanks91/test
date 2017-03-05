@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% block body %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome To CarpeDiem</h1>
+        <p>A Social Network For A Cause</p>
+      </div>
+    </div>
+
+<div class="container">
+
+      <div class="row">
+          {% if user.is_authenticated %}
+            <div class="col-md-4">
+            <h2>Hi {{ user.username }}</h2>
+            <p>Start by checking Your Profile</p>
+            <p><a class="btn btn-default" href="{% url 'profile' %}" role="button">View Profile &raquo;</a></p>
+            </div>
+          {% else %}
+            <div class="col-md-4">
+                <h2>Please Login</h2>
+                <p>You Can't Proceed Without it..</p>
+                <p><a class="btn btn-default" href="{% url 'login' %}" role="button">Login &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Create Account</h2>
+                <p>You'll Need one in order to surf </p>
+                <p><a class="btn btn-default" href="{% url 'signup' %}" role="button">Signup &raquo;</a></p>
+            </div>
+          {% endif %}
+  </div>
+</div>
+{% endblock %}
